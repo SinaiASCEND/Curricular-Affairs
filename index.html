@@ -26,18 +26,22 @@
   }
   @media(max-width:760px){
     [data-heromark]{top:auto!important;bottom:0!important;right:-12%!important;left:auto!important;width:135%!important;max-width:none!important;transform:none!important;opacity:.14!important}
+    [data-logo]{height:34px!important}
+    [data-filterbar]{flex:1 1 100%!important;flex-wrap:nowrap!important;overflow-x:auto;min-width:0;scrollbar-width:none}
+    [data-filterbar]::-webkit-scrollbar{display:none}
+    [data-filterbar]>button{flex:0 0 auto}
   }
 </style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column">
 
   <!-- TOP BAR -->
-  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,4vw,32px);background:#fff;border-bottom:1px solid #E4E4E5;position:sticky;top:0;z-index:60">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px clamp(16px,4vw,32px);background:#fff;border-bottom:1px solid #E4E4E5;position:sticky;top:0;z-index:60">
     <div style="display:flex;align-items:center;gap:14px;min-width:0">
-      <img src="assets/icahn-logo.png" alt="Icahn School of Medicine at Mount Sinai" style="height:44px;width:auto;display:block" />
+      <img data-logo src="assets/icahn-logo.png" alt="Icahn School of Medicine at Mount Sinai" style="height:36px;width:auto;display:block" />
     </div>
     <nav style="display:flex;align-items:center;gap:6px">
-      <a href="{{ contactHref }}" style="font-size:13.5px;font-weight:700;color:#fff;background:#00AEEF;padding:8px 15px;border-radius:7px;text-decoration:none">Contact</a>
+      <a href="{{ contactHref }}" style="font-size:12.5px;font-weight:700;color:#fff;background:#00AEEF;padding:6px 13px;border-radius:6px;text-decoration:none">Contact</a>
     </nav>
   </header>
 
@@ -71,7 +75,7 @@
   </section>
 
   <!-- TOOLBAR -->
-  <div style="position:sticky;top:60px;z-index:50;background:rgba(251,250,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E4E4E5">
+  <div style="position:sticky;top:54px;z-index:50;background:rgba(251,250,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E4E4E5">
     <div style="max-width:1240px;margin:0 auto;padding:13px clamp(16px,4vw,32px);display:flex;align-items:center;gap:12px;flex-wrap:wrap">
       <div style="position:relative;flex:1 1 280px;min-width:220px">
         <div style="display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;border-radius:11px;border:1.5px solid #E4E4E5;background:#fff">
@@ -82,7 +86,6 @@
         {{ searchPanel }}
       </div>
       {{ filterBar }}
-      <button onClick="{{ toggleAll }}" style="display:flex;align-items:center;gap:7px;height:44px;padding:0 15px;border-radius:11px;border:1.5px solid #E4E4E5;background:#fff;color:#1F4E79;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap">{{ toggleAllLabel }}</button>
     </div>
   </div>
 
@@ -496,14 +499,16 @@ class Component extends DCLogic {
   filterBar(){
     this.build(); const order=['all','leadership','phase1','phase2','phase3','assessment','aoc'];
     const counts={all:this._people.length}; this._people.forEach(p=>{counts[p.c]=(counts[p.c]||0)+1;});
-    return this.h('div',{style:{display:'flex',gap:7,flexWrap:'wrap',alignItems:'center'}},
+    const ck=['phase1','phase2','phase3','assessment','aoc']; const allCol=ck.every(k=>this.state.collapsed[k]);
+    const toggleBtn=this.h('button',{key:'toggleall',onClick:()=>{const v=!allCol;const c={};ck.forEach(k=>c[k]=v);this.setState({collapsed:c});},style:{display:'inline-flex',alignItems:'center',gap:6,height:36,padding:'0 13px',borderRadius:9,cursor:'pointer',fontFamily:'inherit',fontSize:12.5,fontWeight:700,border:'1.5px solid #E4E4E5',background:'#fff',color:'#1F4E79',whiteSpace:'nowrap',flex:'0 0 auto'}}, allCol?'Expand all':'Collapse all');
+    return this.h('div',{'data-filterbar':true,style:{display:'flex',gap:7,flexWrap:'wrap',alignItems:'center'}},
       order.map(k=>{ const active=this.state.filter===k; const cat=k==='all'?null:this.CATS[k]; const color=cat?cat.color:'#1F4E79';
         return this.h('button',{key:k,onClick:()=>this.setState({filter:k}),style:{display:'inline-flex',alignItems:'center',gap:7,height:36,padding:'0 12px',borderRadius:9,cursor:'pointer',fontFamily:'inherit',fontSize:12.5,fontWeight:700,border:'1.5px solid '+(active?color:'#E4E4E5'),background:active?color:'#fff',color:active?'#fff':'#58595B',transition:'all .15s'}},
           cat?this.h('span',{style:{width:8,height:8,borderRadius:'50%',background:active?'#fff':cat.color}}):null,
           k==='all'?'All':cat.short,
           this.h('span',{style:{fontSize:11,fontWeight:800,background:active?'rgba(255,255,255,.25)':'#EEF1F4',color:active?'#fff':'#6b7480',borderRadius:999,padding:'1px 7px',minWidth:20,textAlign:'center'}}, counts[k]||0)
         );
-      })
+      }), toggleBtn
     );
   }
 
