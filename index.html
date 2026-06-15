@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#FBFAF8;color:#58595B;font-family:"Barlow",Calibri,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  ::-webkit-scrollbar{height:10px;width:10px}
+  ::-webkit-scrollbar-thumb{background:#cdd9e3;border-radius:8px;border:2px solid #FBFAF8}
+  @keyframes flashPulse{0%{box-shadow:0 0 0 0 rgba(0,174,239,.55)}100%{box-shadow:0 0 0 14px rgba(0,174,239,0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes sheetIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+  @media(max-width:600px){
+    [data-sm-hide]{display:none!important}
+    [data-detailsheet]{width:100%!important}
+  }
+  @media(max-width:760px){
+    [data-heromark]{top:auto!important;bottom:0!important;right:-12%!important;left:auto!important;width:135%!important;max-width:none!important;transform:none!important;opacity:.14!important}
+  }
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <!-- TOP BAR -->
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,4vw,32px);background:#fff;border-bottom:1px solid #E4E4E5;position:sticky;top:0;z-index:60">
+    <div style="display:flex;align-items:center;gap:14px;min-width:0">
+      <img src="assets/icahn-logo.png" alt="Icahn School of Medicine at Mount Sinai" style="height:44px;width:auto;display:block" />
+    </div>
+    <nav style="display:flex;align-items:center;gap:6px">
+      <a href="{{ contactHref }}" style="font-size:13.5px;font-weight:700;color:#fff;background:#00AEEF;padding:8px 15px;border-radius:7px;text-decoration:none">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;overflow:hidden;background:linear-gradient(118deg,#16344E 0%,#0E5E86 46%,#00AEEF 100%)">
+    <div style="position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(96deg,rgba(8,28,46,.82) 0%,rgba(8,28,46,.42) 54%,rgba(8,28,46,.04) 84%)"></div>
+    <svg data-heromark viewBox="0 0 2149.48 711.8" aria-hidden="true" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:380px;max-width:42vw;z-index:1;pointer-events:none;opacity:.9">
+      <g fill="#fff" opacity=".85">
+        <polygon points="98.44 711.8 780.24 192.2 701.99 112.2"/><polygon points="352.93 711.8 907.91 322.73 827.42 240.41"/>
+        <polygon points="612.48 711.8 1408.32 78.9 1328.93 0"/><polygon points="862.16 711.8 1534.77 204.49 1453.79 124.04"/>
+        <polygon points="1121.1 711.8 1661.95 330.86 1583.26 252.65"/><polygon points="1372.32 711.8 1791.42 459.51 1708.85 377.47"/>
+        <polygon points="1629.71 711.8 1918.65 585.84 1837.54 505.31"/>
+      </g>
+      <polygon fill="#D80B8C" points="1967.05 633.96 1888.65 711.8 2045.42 711.8"/>
+    </svg>
+    <div style="position:relative;z-index:3;max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,48px) clamp(18px,4vw,32px) clamp(30px,4vw,44px);color:#fff">
+      <span style="display:inline-flex;align-items:center;gap:11px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">
+        <span style="width:9px;height:9px;border-radius:50%;background:#D80B8C;box-shadow:0 0 0 4px rgba(216,11,140,.25);flex:0 0 auto"></span>
+        <span style="display:flex;flex-direction:column;gap:3px;line-height:1.3">
+          <span>Icahn School of Medicine at Mount Sinai</span>
+          <span style="opacity:.82">Leni and Peter W. May Department of Medical Education</span>
+        </span></span>
+      <h1 style="font-size:clamp(31px,6vw,50px);line-height:1.04;font-weight:800;letter-spacing:-.022em;margin:14px 0 0;max-width:20ch;text-wrap:balance">Office of Curricular Affairs</h1>
+      <p style="font-style:italic;font-size:clamp(13.5px,1.9vw,16.5px);line-height:1.5;max-width:58ch;color:#EAF6FC;font-weight:400;margin-top:16px;padding-left:15px;border-left:3px solid #D80B8C">“The Office of Curricular Affairs designs, stewards, and advances an integrated, evidence-based curriculum that prepares every student to become an exemplary physician.”</p>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 16px;font-weight:800;font-size:clamp(14px,2vw,20px);letter-spacing:-.012em;line-height:1.2">
+        <span style="color:#34BDF1">Climb higher.</span>
+        <span style="color:#ffffff">Reach further.</span>
+        <span style="color:#FA5AAE">Care deeper.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div style="position:sticky;top:60px;z-index:50;background:rgba(251,250,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E4E4E5">
+    <div style="max-width:1240px;margin:0 auto;padding:13px clamp(16px,4vw,32px);display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="position:relative;flex:1 1 280px;min-width:220px">
+        <div style="display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;border-radius:11px;border:1.5px solid #E4E4E5;background:#fff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#007DB0" stroke-width="2" style="width:17px;height:17px;flex:0 0 auto"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <input type="text" placeholder="Search by name, role, module, or phase…" autocomplete="off" value="{{ query }}" onInput="{{ onSearch }}" style="border:0;outline:0;font:inherit;font-size:14.5px;font-weight:500;color:#28323F;width:100%;background:transparent" />
+          <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}"><button onClick="{{ clearSearch }}" style="border:0;background:#EEF3F8;color:#1F4E79;width:22px;height:22px;border-radius:50%;font-size:14px;cursor:pointer;flex:0 0 auto;font-family:inherit;line-height:1">×</button></sc-if>
+        </div>
+        {{ searchPanel }}
+      </div>
+      {{ filterBar }}
+      <button onClick="{{ toggleAll }}" style="display:flex;align-items:center;gap:7px;height:44px;padding:0 15px;border-radius:11px;border:1.5px solid #E4E4E5;background:#fff;color:#1F4E79;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap">{{ toggleAllLabel }}</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main style="max-width:1240px;margin:0 auto;padding:34px clamp(16px,4vw,32px) 30px;width:100%" id="leadership">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+      <span style="width:26px;height:3px;border-radius:3px;background:#1F4E79"></span>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#143655">Reporting Structure</span>
+    </div>
+    <h2 style="font-size:23px;font-weight:800;color:#28323F;letter-spacing:-.01em;margin-bottom:4px">Senior Leadership</h2>
+    <p style="font-size:14px;color:#58595B;max-width:62ch;margin-bottom:20px">Click any person for their full title, module, reporting line, and contact.</p>
+    <div style="overflow-x:auto;padding:8px 4px 22px;margin:0 -4px">
+      {{ leadershipTree }}
+    </div>
+  </main>
+
+  <!-- ROSTER SECTIONS -->
+  <section id="roster" style="max-width:1240px;margin:0 auto;padding:8px clamp(16px,4vw,32px) 30px;width:100%">
+    {{ sections }}
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:54px 20px;text-align:center;animation:fadeUp .3s ease">
+        <h3 style="font-size:19px;font-weight:800;color:#1F4E79;margin-bottom:6px">No one matches your search</h3>
+        <p style="font-size:14px;color:#58595B">Try a different name, role, module, or phase — or clear the filters.</p>
+      </div>
+    </sc-if>
+  </section>
+
+  {{ detail }}
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { query:'', filter:'all', selected:null, flash:null, collapsed:{}, mobile:false };
+  h = (...a) => React.createElement(...a);
+
+  CATS = {
+    leadership:{name:'Curricular Affairs Leadership',short:'Leadership',tag:'Leadership',color:'#1F4E79',dk:'#143655'},
+    phase1:{name:'Pre-Clerkship Curriculum',short:'Phase 1',tag:'Phase 1',color:'#00AEEF',dk:'#007DB0'},
+    phase2:{name:'Core Clerkships',short:'Phase 2',tag:'Phase 2',color:'#D80B8C',dk:'#A80A6E'},
+    phase3:{name:'Advanced Clinical Clerkships',short:'Phase 3',tag:'Phase 3',color:'#7A5BB0',dk:'#5C4488'},
+    assessment:{name:'Clinical Competency',short:'Clinical Skills Development',tag:'Clinical Competency',color:'#BD7E2A',dk:'#8A5A14'},
+    aoc:{name:'Areas of Concentration & Content Areas',short:'AOC',tag:'AOC',color:'#0E9F92',dk:'#0A7268'}
+  };
+
+  componentDidMount(){
+    try{ this._mq=window.matchMedia('(max-width:760px)'); this._onmq=()=>this.setState({mobile:this._mq.matches}); this._mq.addEventListener('change',this._onmq); if(this._mq.matches) this.setState({mobile:true}); }catch(e){}
+  }
+  componentWillUnmount(){ try{ this._mq.removeEventListener('change',this._onmq); }catch(e){} }
+
+  data(){ return [
+    // LEADERSHIP
+    {id:'soriano',n:'Rainier P. Soriano, MD',r:'Senior Associate Dean, Curricular Affairs',a:'Office of Curricular Affairs',c:'leadership',parent:null,photo:'assets/leaders/soriano.jpg',dept:'Geriatrics & Palliative Medicine',email:'rainier.soriano@mssm.edu',domains:['phase1','phase2','phase3','assessment','aoc']},
+    {id:'anand',n:'Shashi Anand, MEd',r:'Associate Dean, UME Affairs',a:'Curricular Affairs Operations',c:'leadership',parent:null,reportsToText:'Senior Associate Dean for Medical Education Administration',photo:'assets/leaders/anand.jpg',dept:'Medical Education'},
+    {id:'leisman',n:'Staci Leisman, MD',r:'Director, Pre-Clerkship Curriculum',a:'Phase 1 · Pre-Clerkship',c:'leadership',parent:'soriano',photo:'assets/leaders/leisman.jpg',domains:['phase1'],dept:'Medicine · Nephrology'},
+    {id:'holzer',n:'Horatio Holzer, MD',r:'Director, Clinical Curriculum',a:'Phases 2 & 3 - Clinical',c:'leadership',parent:'soriano',photo:'assets/leaders/holzer.jpg',domains:['phase2','phase3'],dept:'Medicine · Hospital Medicine',also:['Director, Periodic Assessment of Knowledge and Skills (PEAKS) 2','Director, Transitions to Phase 2 (TP2)']},
+    {id:'ramaswamy',n:'Ravishankar Ramaswamy, MD, MHPE',r:'Director, Integration & Transitions Phase',a:'AOC & Content Areas',c:'leadership',parent:'soriano',photo:'assets/leaders/ramaswamy.jpg',domains:['aoc'],dept:'Geriatrics & Palliative Medicine',also:['Director, The Inquiry (THINQ) Curriculum','Director, Transition to Phase 3 (TP3)']},
+    {id:'strother',n:'Christopher Strother, MD',r:'Director, Clinical Competency',a:'Clinical Skills Development',c:'leadership',parent:'soriano',photo:'assets/leaders/strother.jpg',domains:['assessment'],dept:'Emergency Medicine',also:['Director, Clinical Competency Mentoring Program','Director, Periodic Assessment of Knowledge and Skills (PEAKS) 1']},
+    {id:'singh',n:'Vasundhara Singh, MD',r:'Director, Medical Student Electives',a:'Electives and Career Exploration',c:'leadership',parent:'soriano',photo:'assets/leaders/singh.jpg',domains:['phase3'],dept:'Medicine · Hospital Medicine',also:'Director, NEXUS Program'},
+    {id:'chadha',n:'Nisha Chadha, MD',r:'Director, Clinical Apprenticeship Experience (APEX)',a:'Early Clinical Immersion',c:'leadership',parent:'soriano',photo:'assets/leaders/chadha-face.jpg',dept:'Ophthalmology'},
+    {id:'fernandez',n:'Helen Fernandez, MD, MPH',r:'Director, Educational Strategy & Faculty Development',a:'Faculty Development',c:'leadership',parent:'soriano',photo:'assets/leaders/fernandez.jpg',dept:'Geriatrics & Palliative Medicine'},
+
+    // PHASE 1 (lead: leisman)
+    {id:'bechhofer',n:'David Bechhofer, PhD',r:'Module Director',a:'Molecular, Cellular & Genomic Foundations (MCG)',g:'Molecular, Cellular & Genomic Foundations (MCG)',group:'mcg',rank:'director',c:'phase1',parent:'leisman',dept:'Pharmacological Sciences'},
+    {id:'cohen',n:'Oren Cohen, MD',r:'Module Director',a:'Pulmonary Medicine',g:'Pulmonary',group:'pulm',rank:'director',c:'phase1',parent:'leisman',dept:'Medicine · Pulmonary, Critical Care & Sleep Medicine'},
+    {id:'beasley',n:'Mary Beasley, MD',r:'Co-Module Director',a:'Pulmonary Pathology',g:'Pulmonary',group:'pulm',rank:'co',c:'phase1',parent:'cohen',dept:'Pathology, Molecular & Cell-Based Medicine'},
+    {id:'itzkowitz',n:'Steven Itzkowitz, MD',r:'Module Director',a:'Gastroenterology',g:'Gastroenterology',group:'gi',rank:'director',c:'phase1',parent:'leisman',dept:'Medicine · Gastroenterology'},
+    {id:'paulsen',n:'John David Paulsen, MD',r:'Co-Module Director',a:'GI Pathology',g:'Gastroenterology',group:'gi',rank:'co',c:'phase1',parent:'itzkowitz',dept:'Pathology, Molecular & Cell-Based Medicine'},
+    {id:'toniakim-renal',uid:'toniakim',n:'Tonia Kim, MD',r:'Module Director',a:'Renal',g:'Renal',group:'renal',rank:'director',c:'phase1',parent:'leisman',photo:'assets/people/tonia-kim.jpg',dept:'Medicine · Nephrology'},
+    {id:'levavi',n:'Hannah Levavi, MD',r:'Module Director',a:'Hematology',g:'Hematology',group:'heme',rank:'director',c:'phase1',parent:'leisman',dept:'Medicine · Hematology & Medical Oncology'},
+    {id:'polydorides',n:'Alexandros Polydorides, MD PhD',r:'Module Director',a:'Pathology',g:'Pathology',group:'path',rank:'director',c:'phase1',parent:'leisman',dept:'Pathology, Molecular & Cell-Based Medicine'},
+    {id:'pour',n:'Trevor Pour, MD',r:'Module Director',a:'Anatomy',g:'Anatomy',group:'anat',rank:'director',c:'phase1',parent:'leisman',dept:'Emergency Medicine'},
+    {id:'skamagas',n:'Maria Skamagas, MD',r:'Module Director',a:'Endocrinology',g:'Endocrinology',group:'endo',rank:'director',c:'phase1',parent:'leisman',dept:'Medicine · Endocrinology, Diabetes & Bone Disease'},
+    {id:'tomasi',n:'Simone Tomasi, MD PhD',r:'Module Director',a:'Behavioral Science',g:'Behavioral Science',group:'behav',rank:'director',c:'phase1',parent:'leisman',dept:'Psychiatry'},
+    {id:'tomey',n:'Matthew Tomey, MD',r:'Module Director',a:'Cardiology',g:'Cardiology',group:'cardio',rank:'director',c:'phase1',parent:'leisman',dept:'Cardiology'},
+    {id:'krausert',n:'Amanda Krausert, MD',r:'Co-Module Director',a:'CV Pathology',g:'Cardiology',group:'cardio',rank:'co',c:'phase1',parent:'tomey',dept:'Pathology, Molecular & Cell-Based Medicine'},
+    {id:'wiesendanger',n:'Margrit Wiesendanger, MD PhD',r:'Co-Module Director',a:'Foundations of Immunology & Microbiology (FIM)',g:'Foundations of Immunology & Microbiology (FIM)',group:'fim',rank:'co',c:'phase1',parent:'leisman',dept:'Medicine · Rheumatology'},
+    {id:'caplivski',n:'Daniel Caplivski, MD',r:'Co-Module Director',a:'Foundations of Immunology & Microbiology (FIM)',g:'Foundations of Immunology & Microbiology (FIM)',group:'fim',rank:'co',c:'phase1',parent:'leisman',dept:'Medicine · Infectious Disease'},
+    {id:'posada',n:'Roberto Posada, MD',r:'Co-Module Director',a:'Foundations of Immunology & Microbiology (FIM)',g:'Foundations of Immunology & Microbiology (FIM)',group:'fim',rank:'co',c:'phase1',parent:'leisman',dept:'Pediatrics'},
+    {id:'bayard',n:'Micaela Bayard, MD',r:'Co-Module Director',a:'Musculoskeletal Pathophysiology',g:'Musculoskeletal Pathophysiology',group:'msk',rank:'co',c:'phase1',parent:'leisman',dept:'Medicine · Rheumatology'},
+    {id:'sookim',n:'Soo Kim, MD',r:'Co-Module Director',a:'Musculoskeletal Pathophysiology',g:'Musculoskeletal Pathophysiology',group:'msk',rank:'co',c:'phase1',parent:'leisman',photo:'assets/people/soo-kim.jpg',dept:'Rehabilitation & Human Performance'},
+    {id:'kalir',n:'Tamara Kalir, MD',r:'Co-Module Director',a:'GU, Sexual & Reproductive Health (GU-SRH)',g:'GU, Sexual & Reproductive Health (GU-SRH)',group:'gusrh',rank:'co',c:'phase1',parent:'leisman',dept:'Pathology, Molecular & Cell-Based Medicine'},
+    {id:'abraham-gusrh',uid:'abraham',n:'Cynthia Abraham, MD',r:'Co-Module Director',a:'GU, Sexual & Reproductive Health (GU-SRH)',g:'GU, Sexual & Reproductive Health (GU-SRH)',group:'gusrh',rank:'co',c:'phase1',parent:'leisman',photo:'assets/people/cynthia-abraham.jpg',dept:'Obstetrics, Gynecology & Reproductive Science'},
+    {id:'pace',n:'Anna Pace, MD',r:'Co-Module Director',a:'Neuroscience',g:'Neuroscience',group:'neuro',rank:'co',c:'phase1',parent:'leisman',dept:'Neurology'},
+    {id:'stein',n:'Laura Stein, MD',r:'Co-Module Director',a:'Neuroscience',g:'Neuroscience',group:'neuro',rank:'co',c:'phase1',parent:'leisman',dept:'Neurology'},
+
+    // PHASE 2 (lead: holzer)
+    {id:'merrill',n:'Eve Merrill, MD',r:'Clerkship Director',a:'Inpatient Medicine',g:'Inpatient Medicine',group:'med2',rank:'director',c:'phase2',parent:'holzer',dept:'Medicine · Hospital Medicine'},
+    {id:'hermansen',n:'Rex Hermansen, MD',r:'Associate Clerkship Director',a:'Inpatient Medicine',g:'Inpatient Medicine',group:'med2',rank:'associate',c:'phase2',parent:'merrill',dept:'Medicine · Hospital Medicine'},
+    {id:'chen',n:'Katherine Chen, MD',r:'Clerkship Director',a:'OB-GYN',g:'OB-GYN',group:'obgyn',rank:'director',c:'phase2',parent:'holzer',dept:'Obstetrics, Gynecology & Reproductive Science'},
+    {id:'abraham-obgyn',uid:'abraham',n:'Cynthia Abraham, MD',r:'Associate Clerkship Director',a:'OB-GYN',g:'OB-GYN',group:'obgyn',rank:'associate',c:'phase2',parent:'chen',photo:'assets/people/cynthia-abraham.jpg',dept:'Obstetrics, Gynecology & Reproductive Science'},
+    {id:'chieco',n:'Deanna Chieco, MD',r:'Clerkship Director',a:'Pediatrics',g:'Pediatrics',group:'peds2',rank:'director',c:'phase2',parent:'holzer',dept:'Pediatrics'},
+    {id:'tsevdos',n:'Despina Tsevdos, MD',r:'Associate Clerkship Director',a:'Pediatrics',g:'Pediatrics',group:'peds2',rank:'associate',c:'phase2',parent:'chieco',dept:'Pediatrics'},
+    {id:'perez',n:'Mercedes Perez-Rodriguez, MD PhD',r:'Clerkship Director',a:'Psychiatry',g:'Psychiatry',group:'psych',rank:'director',c:'phase2',parent:'holzer',dept:'Psychiatry'},
+    {id:'kufert',n:'Yael Kufert, MD',r:'Associate Clerkship Director',a:'Psychiatry',g:'Psychiatry',group:'psych',rank:'associate',c:'phase2',parent:'perez',dept:'Psychiatry'},
+    {id:'swan',n:'Matthew Swan, MD',r:'Clerkship Director',a:'Neurology',g:'Neurology',group:'neuro2',rank:'director',c:'phase2',parent:'holzer',dept:'Neurology'},
+    {id:'lendaris',n:'Andrea Lendaris, MD',r:'Associate Clerkship Director',a:'Neurology',g:'Neurology',group:'neuro2',rank:'associate',c:'phase2',parent:'swan',dept:'Neurology'},
+    {id:'chietero',n:'Michael Chietero, MD',r:'Co-Clerkship Director',a:'Surgery–Anesthesiology',g:'Surgery–Anesthesiology',group:'surg2',rank:'co',c:'phase2',parent:'holzer',dept:'Anesthesiology'},
+    {id:'lerner',n:'Susan Lerner, MD',r:'Co-Clerkship Director',a:'Surgery–Anesthesiology',g:'Surgery–Anesthesiology',group:'surg2',rank:'co',c:'phase2',parent:'holzer',dept:'Recanati/Miller Transplantation Institute'},
+    {id:'korayem-p2',uid:'korayem',n:'Adam Korayem, MD',r:'Co-Clerkship Director',a:'Surgery–Anesthesiology',g:'Surgery–Anesthesiology',group:'surg2',rank:'co',c:'phase2',parent:'holzer',photo:'assets/people/adam-korayem.jpg',dept:'Surgery'},
+    {id:'jasti',n:'Harish Jasti, MD',r:'Co-Clerkship Director',a:'Ambulatory Care / Geriatrics',g:'Ambulatory Care / Geriatrics',group:'ambu',rank:'co',c:'phase2',parent:'holzer',dept:'Medicine · General Medicine'},
+    {id:'belland-acg',uid:'belland',n:'Laura Belland, MD',r:'Co-Clerkship Director',a:'Ambulatory Care / Geriatrics',g:'Ambulatory Care / Geriatrics',group:'ambu',rank:'co',c:'phase2',parent:'holzer',dept:'Geriatrics & Palliative Medicine'},
+    {id:'belland',n:'Laura Belland, MD',r:'Clerkship Director',a:'Palliative Care',g:'Palliative Care',group:'pall',rank:'director',c:'phase2',parent:'holzer',dept:'Geriatrics & Palliative Medicine'},
+    {id:'trivedi-p2',uid:'trivedi',n:'Shefali Trivedi, MD',r:'Clerkship Director',a:'Emergency Medicine',g:'Emergency Medicine',group:'em2',rank:'director',c:'phase2',parent:'holzer',photo:'assets/people/shefali-trivedi.jpg',dept:'Emergency Medicine'},
+    {id:'pawar-p2',uid:'pawar',n:'Chandni Pawar, MD',r:'Associate Clerkship Director',a:'Emergency Medicine',g:'Emergency Medicine',group:'em2',rank:'associate',c:'phase2',parent:'trivedi-p2',photo:'assets/people/chandni-pawar.jpg',dept:'Emergency Medicine'},
+
+    // PHASE 3 (lead: holzer)
+    {id:'barna',n:'Eric Barna, MD',r:'Acting Internship Director',a:'Medicine',g:'Medicine',group:'med3',rank:'director',c:'phase3',parent:'holzer',dept:'Medicine · Hospital Medicine'},
+    {id:'fune',n:'Jan Fune, MD',r:'Acting Internship Director',a:'Pediatrics',g:'Pediatrics',group:'peds3',rank:'director',c:'phase3',parent:'holzer',dept:'Pediatrics'},
+    {id:'nguyen',n:'Scott Nguyen, MD',r:'Acting Internship Director',a:'Surgery',g:'Surgery',group:'surg3',rank:'director',c:'phase3',parent:'holzer',dept:'Surgery'},
+    {id:'korayem-p3',uid:'korayem',n:'Adam Korayem, MD',r:'Acting Internship Director',a:'Surgical Subspecialties',g:'Surgical Subspecialties',group:'surgsub3',rank:'director',c:'phase3',parent:'holzer',photo:'assets/people/adam-korayem.jpg',dept:'Surgery'},
+    {id:'ccc-1',n:'TBA',r:'Co-Director',a:'Chronic Care Clerkship (CCC)',g:'Chronic Care Clerkship (CCC)',group:'ccc',rank:'co',c:'phase3',parent:'holzer',photo:''},
+    {id:'ccc-2',n:'TBA',r:'Co-Director',a:'Chronic Care Clerkship (CCC)',g:'Chronic Care Clerkship (CCC)',group:'ccc',rank:'co',c:'phase3',parent:'holzer',photo:''},
+    {id:'ccc-assoc',n:'TBA',r:'Associate Clerkship Director',a:'Chronic Care Clerkship (CCC)',g:'Chronic Care Clerkship (CCC)',group:'ccc',rank:'associate',c:'phase3',parent:'ccc-1',photo:''},
+    {id:'trivedi-p3',uid:'trivedi',n:'Shefali Trivedi, MD',r:'Acting Internship Director',a:'Emergency Medicine',g:'Emergency Medicine',group:'em3',rank:'director',c:'phase3',parent:'holzer',photo:'assets/people/shefali-trivedi.jpg',dept:'Emergency Medicine'},
+    {id:'pawar-p3',uid:'pawar',n:'Chandni Pawar, MD',r:'Acting Internship Co-Director',a:'Emergency Medicine',g:'Emergency Medicine',group:'em3',rank:'co',c:'phase3',parent:'trivedi-p3',photo:'assets/people/chandni-pawar.jpg',dept:'Emergency Medicine'},
+
+    // ASSESSMENT (lead: strother)
+    {id:'hojsak',n:'Joanne Hojsak, MD',r:'Module Director',a:'Practice of Medicine (POM 1)',g:'Practice of Medicine (POM)',group:'pom',rank:'director',c:'assessment',parent:'strother',dept:'Pediatrics'},
+    {id:'herscher',n:'Michael Herscher, MD',r:'Module Director',a:'Practice of Medicine (POM 2)',g:'Practice of Medicine (POM)',group:'pom',rank:'director',c:'assessment',parent:'strother',dept:'Medicine · Hospital Medicine'},
+    {id:'storch',n:'Bess Storch, MD',r:'Module Director',a:'Practice of Medicine (POM 3)',g:'Practice of Medicine (POM)',group:'pom',rank:'director',c:'assessment',parent:'strother',dept:'Emergency Medicine'},
+    {id:'forsyth',n:'Beverly Forsyth, MD',r:'Medical Director, The Morchand Center',a:'Clinical Skills & Simulation',g:'The Morchand Center',group:'morchand',rank:'director',c:'assessment',parent:'strother',photo:'assets/people/beverly-forsyth.jpg',dept:'Medicine · Infectious Disease'},
+    {id:'ttr-1',n:'TBA',r:'Co-Director',a:'Transition to Residency (TTR)',g:'Transition to Residency (TTR)',group:'ttr',rank:'co',c:'assessment',parent:'strother',photo:''},
+    {id:'ttr-2',n:'TBA',r:'Co-Director',a:'Transition to Residency (TTR)',g:'Transition to Residency (TTR)',group:'ttr',rank:'co',c:'assessment',parent:'strother',photo:''},
+
+    // AOC & CONTENT AREAS (lead: ramaswamy)
+    {id:'portnoy',n:'David Portnoy, MD',r:'AOC Director',a:'Professional Identity Formation',g:'Professional Identity Formation',group:'aoc-pif',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medicine · Hospital Medicine'},
+    {id:'hess',n:'Leona Hess, PhD',r:'AOC Director',a:'Patient-Centered Advocacy',g:'Patient-Centered Advocacy',group:'aoc-adv',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medical Education'},
+    {id:'kochar',n:'Aveena Kochar, MD',r:'AOC Director',a:'Healthcare Delivery Science',g:'Healthcare Delivery Science',group:'aoc-hds',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medicine · Hospital Medicine'},
+    {id:'vangerwen',n:'Maaike Van Gerwen, MD PhD',r:'AOC Director',a:'Scientific & Scholarly Discovery',g:'Scientific & Scholarly Discovery',group:'aoc-ssd',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Otolaryngology'},
+    {id:'chokshi',n:'Krishna Chokshi, MD',r:'Content Area Director',a:'Medical Ethics',g:'Medical Ethics',group:'ca-ethics',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',dept:'Medicine · Hospital Medicine'},
+    {id:'sheehan',n:'Jacqueline Sheehan, MD',r:'Content Area Director',a:'Communication & Interpersonal Skills (CIS)',g:'Communication & Interpersonal Skills (CIS)',group:'ca-comm',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',dept:'Geriatrics & Palliative Medicine'},
+    {id:'chan',n:'Lili Chan, MD',r:'Content Area Director',a:'Artificial Intelligence',g:'Artificial Intelligence',group:'ca-ai',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',dept:'Artificial Intelligence & Human Health'},
+    {id:'toniakim-pharm',uid:'toniakim',n:'Tonia Kim, MD',r:'Content Area Director',a:'Pharmacology',g:'Pharmacology',group:'ca-pharm',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',photo:'assets/people/tonia-kim.jpg',dept:'Medicine · Nephrology'},
+    {id:'abraham-embryo',uid:'abraham',n:'Cynthia Abraham, MD',r:'Content Area Director',a:'Embryology',g:'Embryology',group:'ca-embryo',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',photo:'assets/people/cynthia-abraham.jpg',dept:'Obstetrics, Gynecology & Reproductive Science'},
+    {id:'storch-ebm',uid:'storch',n:'Bess Storch, MD',r:'Content Area Director',a:'Evidence-Based Medicine (EBM)',g:'Evidence-Based Medicine (EBM)',group:'ca-ebm',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',dept:'Emergency Medicine'},
+    {id:'tba-nutrition',n:'TBA',r:'Content Area Director',a:'Nutrition',g:'Nutrition',group:'ca-nutr',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',photo:''},
+    {id:'tba-physiology',n:'TBA',r:'Content Area Director',a:'Physiology',g:'Physiology',group:'ca-phys',rank:'director',kind:'content',c:'aoc',parent:'ramaswamy',photo:''}
+  ]; }
+
+  bare(n){ return n.replace(/,.*$/,'').replace(/\(.*?\)/g,'').replace(/\s+/g,' ').trim(); }
+  slug(n){ return this.bare(n).toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,''); }
+  initials(n){ if(n==='TBA') return '—'; const p=this.bare(n).split(/\s+/).filter(Boolean); if(!p.length) return '?'; return ((p[0][0]||'')+(p.length>1?p[p.length-1][0]:'')).toUpperCase(); }
+  email(n){ if(n==='TBA') return null; const p=this.bare(n).toLowerCase().split(/\s+/).filter(Boolean); if(!p.length) return null; const first=p[0]; const last=p.slice(1).join(''); return (last?first+'.'+last:first)+'@mssm.edu'; }
+
+  build(){
+    if(this._people) return;
+    const P=this.data();
+    P.forEach(p=>{ if(p.photo===undefined) p.photo='assets/people/'+this.slug(p.n)+'.jpg'; p.uid=p.uid||p.id; if(p.also&&!Array.isArray(p.also))p.also=[p.also]; p.email=p.email||this.email(p.n); p.text=(p.n+' '+p.r+' '+p.a+' '+(p.dept||'')+' '+this.CATS[p.c].name+' '+(p.tag||'')).toLowerCase(); });
+    const byId={}, kids={}; P.forEach(p=>byId[p.id]=p);
+    P.forEach(p=>{ if(p.parent){ (kids[p.parent]=kids[p.parent]||[]).push(p); } });
+    const groups={}, gmap={};
+    P.forEach(p=>{ if(p.c==='leadership') return; const gk=p.c+'|'+p.group; if(!gmap[gk]){ gmap[gk]={key:gk,label:p.g||p.a,c:p.c,kind:p.kind||null,members:[]}; (groups[p.c]=groups[p.c]||[]).push(gmap[gk]); } gmap[gk].members.push(p); });
+    const rw={director:0,co:1,associate:2};
+    Object.keys(gmap).forEach(k=>gmap[k].members.sort((a,b)=>(rw[a.rank]||0)-(rw[b.rank]||0)));
+    this._people=P; this._byId=byId; this._kids=kids; this._groups=groups;
+  }
+
+  q(){ return (this.state.query||'').trim().toLowerCase(); }
+  matchFilter(p){ const f=this.state.filter; return f==='all'||p.c===f||(p.domains&&p.domains.indexOf(f)>-1); }
+  matchQuery(p){ const q=this.q(); return !q||p.text.indexOf(q)>-1; }
+  visible(p){ return this.matchFilter(p)&&this.matchQuery(p); }
+  select(id){ this.setState({selected:id}); }
+  jump(id){
+    this.setState({selected:id,flash:id});
+    setTimeout(()=>{ const el=document.getElementById('node-'+id); if(el){ window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-130,behavior:'smooth'}); } },40);
+    setTimeout(()=>this.setState({flash:null}),1400);
+  }
+  toggleSection(key){ this.setState(s=>({collapsed:Object.assign({},s.collapsed,{[key]:!s.collapsed[key]})})); }
+  leadFor(key){ return this._byId[{phase1:'leisman',phase2:'holzer',phase3:'holzer',assessment:'strother',aoc:'ramaswamy'}[key]]; }
+  teamCountFor(id){ const doms={leisman:['phase1'],holzer:['phase2','phase3'],ramaswamy:['aoc'],strother:['assessment']}[id]||[]; return this._people.filter(p=>doms.indexOf(p.c)>-1).length; }
+  gotoSection(key){ if(this.state.collapsed[key]) this.toggleSection(key); setTimeout(()=>{ const el=document.getElementById('sec-'+key); if(el){ window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'}); } },50); }
+
+  // ---------- shared bits ----------
+  photo(p,size){
+    const cat=this.CATS[p.c]; const r=size>=80?20:(size>=50?13:11);
+    return this.h('div',{style:{width:size,height:size,borderRadius:r,overflow:'hidden',position:'relative',flex:'0 0 auto',boxShadow:'inset 0 0 0 1.5px '+cat.color,background:'#EAF1F8'}},
+      this.h('div',{style:{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',background:cat.color,color:'#fff',fontWeight:800,fontSize:Math.round(size*0.33)}}, this.initials(p.n)),
+      p.photo?this.h('img',{src:p.photo,alt:this.bare(p.n),loading:'lazy',onError:e=>{e.target.style.display='none';},style:{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}):null
+    );
+  }
+  pill(p){ const cat=this.CATS[p.c]; return this.h('span',{style:{display:'inline-block',fontSize:9.5,fontWeight:800,letterSpacing:'.09em',textTransform:'uppercase',borderRadius:5,padding:'3px 8px',color:cat.dk,background:cat.color+'22'}}, p.tag||cat.tag); }
+
+  // ---------- leadership tree (desktop) ----------
+  treeCard(p,size){
+    const cat=this.CATS[p.c]; const big=size==='lg'; const ps=big?84:58; const w=big?244:188;
+    const isHit=this.q()&&this.visible(p); const dim=!this.visible(p); const flash=this.state.flash===p.id; const sel=this.state.selected===p.id;
+    const leadSet=['leisman','holzer','ramaswamy','strother'];
+    let footer=null;
+    if(leadSet.indexOf(p.id)>-1){ const n=this.teamCountFor(p.id);
+      footer=this.h('button',{onClick:(e)=>{e.stopPropagation();this.gotoSection(p.domains[0]);},style:{marginTop:9,border:'0',background:cat.color+'14',color:cat.dk,fontFamily:'inherit',fontSize:11.5,fontWeight:800,borderRadius:7,padding:'5px 10px',cursor:'pointer'}}, 'View team ('+n+') ›'); }
+    const bmap={soriano:'leadership',anand:'leadership',leisman:'phase1',holzer:'phase2',ramaswamy:'aoc',strother:'assessment',singh:'phase3',chadha:'leadership',fernandez:'leadership'};
+    const bcat=bmap[p.id]?this.CATS[bmap[p.id]]:null;
+    const inner=this.h('div',{style:{padding:bcat?(big?'15px 18px 16px':'12px 14px 13px'):(big?'18px 18px 16px':'14px 14px 13px'),width:w,display:'flex',flexDirection:'column',alignItems:'center',textAlign:'center'}},
+      this.photo(p,ps),
+      this.h('div',{style:{marginTop:10,fontSize:big?18:14.5,fontWeight:800,color:'#1F4E79',letterSpacing:'-.01em',lineHeight:1.18}}, p.n),
+      bcat?null:this.h('div',{style:{marginTop:4,fontSize:big?13:12,fontWeight:700,color:cat.dk,lineHeight:1.25}}, p.r),
+      (!bcat&&p.also)?this.h('div',{style:{marginTop:4,fontSize:big?12:11,fontWeight:700,color:cat.dk,lineHeight:1.25,opacity:.82}}, p.also):null,
+      this.h('div',{style:{marginTop:bcat?4:3,fontSize:11,fontWeight:500,color:'#6b7480',lineHeight:1.25}}, p.a),
+      footer
+    );
+    const banner=bcat?this.h('div',{style:{width:w,padding:'9px 12px',background:bcat.color+'15',borderBottom:'1px solid '+bcat.color+'33'}},
+      this.h('div',{style:{fontSize:big?11.5:10.5,fontWeight:800,color:bcat.dk,lineHeight:1.3,letterSpacing:'.07em',textTransform:'uppercase',textAlign:'center'}}, p.r)):null;
+    return this.h('article',{id:'node-'+p.id,onClick:()=>this.select(p.id),style:{cursor:'pointer',overflow:'hidden',background:'#fff',border:'1px solid '+(sel||isHit?(bcat?bcat.color:cat.color):'#E7E9EC'),borderRadius:14,transition:'box-shadow .18s, border-color .18s, transform .18s, opacity .18s',opacity:dim?0.32:1,transform:(isHit||sel)?'translateY(-1px)':'none',boxShadow:flash?('0 0 0 3px '+(bcat?bcat.color:cat.color)):(sel?('0 12px 30px '+(bcat?bcat.color:cat.color)+'33'):(isHit?'0 8px 22px rgba(31,78,121,.12)':'0 1px 0 rgba(31,78,121,.05)')),animation:flash?'flashPulse 1.3s ease-out':'none'}}, banner, inner);
+  }
+  opsCard(){ return this.h('div',{style:{width:188,border:'1.5px dashed #C2CEDA',borderRadius:14,padding:'13px 14px',background:'#F7F9FB',textAlign:'center'}},
+    this.h('div',{style:{width:40,height:40,margin:'0 auto 8px',borderRadius:10,background:'#E7EEF5',display:'flex',alignItems:'center',justifyContent:'center',color:'#1F4E79',fontWeight:800,fontSize:12,letterSpacing:'.05em'}}, 'OPS'),
+    this.h('div',{style:{fontSize:12.5,fontWeight:800,color:'#1F4E79',lineHeight:1.2}}, 'Curricular Affairs Operations Team'),
+    this.h('div',{style:{fontSize:11,fontWeight:600,color:'#8a93a0',marginTop:3}}, 'Administration & Coordination')
+  ); }
+  mentorsPlaceholder(){ const c='#BD7E2A', dk='#8A5A14';
+    return this.h('article',{key:'cc-mentors',style:{background:'#FCFAF6',border:'1.5px dashed '+c+'88',borderRadius:14,overflow:'hidden'}},
+      this.h('div',{style:{display:'flex',alignItems:'center',gap:10,padding:'11px 15px 10px 13px',background:c+'12',borderBottom:'1px dashed '+c+'55',borderLeft:'4px dashed '+c}},
+        this.h('div',{style:{fontSize:13.5,fontWeight:800,color:dk,letterSpacing:'-.01em',lineHeight:1.2,flex:1}}, 'Clinical Competency Mentors'),
+        this.h('span',{style:{fontSize:11,fontWeight:800,color:dk,background:c+'1f',borderRadius:999,padding:'2px 8px'}}, '30')
+      ),
+      this.h('div',{style:{padding:'14px 15px',display:'flex',alignItems:'center',gap:12}},
+        this.h('div',{style:{width:46,height:46,borderRadius:12,border:'1.5px dashed '+c+'88',display:'flex',alignItems:'center',justifyContent:'center',color:dk,fontWeight:800,fontSize:15,flex:'0 0 auto',background:c+'0e'}}, '30'),
+        this.h('div',{style:{minWidth:0}},
+          this.h('div',{style:{fontSize:13.5,fontWeight:800,color:'#1F4E79',lineHeight:1.2}}, 'Mentor roster to be added'),
+          this.h('div',{style:{fontSize:12,fontWeight:600,color:'#8a93a0',marginTop:2,lineHeight:1.3}}, 'Approximately 30 Clinical Competency Mentors will expand here under Dr. Strother.')
+        )
+      )
+    );
+  }
+  connector(i,n,gap){ const line='#BCD0E0'; const H=24; const g=gap/2;
+    return this.h('div',{style:{position:'relative',width:'100%',height:H}},
+      i>0?this.h('div',{key:'l',style:{position:'absolute',top:0,left:-g+'px',width:'calc(50% + '+g+'px)',borderTop:'2px solid '+line}}):null,
+      i<n-1?this.h('div',{key:'r',style:{position:'absolute',top:0,right:-g+'px',width:'calc(50% + '+g+'px)',borderTop:'2px solid '+line}}):null,
+      this.h('div',{key:'s',style:{position:'absolute',top:0,left:'calc(50% - 1px)',width:2,height:H,background:line}})
+    );
+  }
+  stub(hh){ return this.h('div',{style:{width:2,height:hh||24,background:'#BCD0E0'}}); }
+  childRow(nodes,gap){ return this.h('div',{style:{display:'flex',justifyContent:'center',alignItems:'flex-start',gap:gap}},
+    nodes.map((node,i)=>this.h('div',{key:i,style:{display:'flex',flexDirection:'column',alignItems:'center',flex:'0 0 auto'}}, this.connector(i,nodes.length,gap), node)) ); }
+
+  leadershipTree(){
+    this.build(); const b=this._byId; const line='#BCD0E0';
+    const tier2=['leisman','holzer','ramaswamy','strother'].map(id=>this.treeCard(b[id],'md'));
+    const tier3=['singh','chadha','fernandez'].map(id=>this.treeCard(b[id],'md'));
+    const spineH=348;
+    const topRegion=this.h('div',{style:{position:'relative',width:'100%',height:spineH}},
+      this.h('div',{style:{position:'absolute',left:'calc(50% - 1px)',top:0,height:spineH,width:2,background:line}}),
+      this.h('div',{style:{position:'absolute',left:'50%',top:30,display:'flex',alignItems:'flex-start'}},
+        this.h('div',{style:{width:54,height:0,borderTop:'2px dashed '+line,marginTop:50,flex:'0 0 auto'}}),
+        this.h('div',{style:{display:'flex',flexDirection:'column',alignItems:'center'}},
+          this.h('div',{style:{fontSize:10,fontWeight:800,letterSpacing:'.13em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:7}}, 'Administrative'),
+          this.treeCard(b['anand'],'md'),
+          this.stub(16),
+          this.opsCard()
+        )
+      )
+    );
+    const tier2wrap=this.h('div',{style:{position:'relative'}},
+      this.h('div',{style:{position:'absolute',left:'calc(50% - 1px)',top:0,bottom:0,width:2,background:line}}),
+      this.childRow(tier2,24)
+    );
+    return this.h('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',minWidth:1080,margin:'0 auto'}},
+      this.treeCard(b['soriano'],'lg'),
+      topRegion,
+      tier2wrap,
+      this.stub(26),
+      this.h('div',{style:{display:'inline-flex',alignItems:'center',gap:8,background:'#EEF3F8',color:'#143655',borderRadius:999,padding:'4px 13px',fontSize:10,fontWeight:800,letterSpacing:'.13em',textTransform:'uppercase',marginBottom:10}}, 'Program Directors'),
+      this.childRow(tier3,24)
+    );
+  }
+
+  // ---------- leadership listing (mobile) ----------
+  leaderListCard(p){
+    const cat=this.CATS[p.c]; const dim=!this.visible(p); const flash=this.state.flash===p.id; const sel=this.state.selected===p.id;
+    const leadSet=['leisman','holzer','ramaswamy','strother'];
+    return this.h('div',{key:p.id,id:'node-'+p.id,onClick:()=>this.select(p.id),style:{display:'flex',gap:13,alignItems:'center',background:'#fff',border:'1px solid '+(sel||flash?cat.color:'#E7E9EC'),borderRadius:13,padding:'12px 14px',cursor:'pointer',opacity:dim?0.32:1,animation:flash?'flashPulse 1.3s ease-out':'none',boxShadow:'0 1px 0 rgba(31,78,121,.05)'}},
+      this.photo(p,50),
+      this.h('div',{style:{minWidth:0,flex:1}},
+        this.h('div',{style:{fontSize:15,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, p.n),
+        this.h('div',{style:{fontSize:12.5,fontWeight:700,color:cat.dk,marginTop:3,lineHeight:1.2}}, p.r),
+        p.also?this.h('div',{style:{fontSize:12,fontWeight:700,color:cat.dk,marginTop:2,lineHeight:1.2,opacity:.82}}, p.also):null,
+        this.h('div',{style:{fontSize:11.5,fontWeight:500,color:'#6b7480',marginTop:2}}, p.a)
+      ),
+      leadSet.indexOf(p.id)>-1?this.h('button',{onClick:(e)=>{e.stopPropagation();this.gotoSection(p.domains[0]);},style:{flex:'0 0 auto',border:'0',background:cat.color+'16',color:cat.dk,fontFamily:'inherit',fontSize:11,fontWeight:800,borderRadius:8,padding:'7px 9px',cursor:'pointer'}}, 'Team ›'):null
+    );
+  }
+  mobileLeadership(){
+    this.build(); const b=this._byId;
+    const grp=(label,ids,extra)=>this.h('div',{key:label,style:{marginBottom:18}},
+      this.h('div',{style:{fontSize:11,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#143655',marginBottom:9}}, label),
+      this.h('div',{style:{display:'flex',flexDirection:'column',gap:10}}, ids.map(id=>this.leaderListCard(b[id])).concat(extra?[extra]:[]))
+    );
+    const ops=this.h('div',{key:'ops',style:{border:'1.5px dashed #C2CEDA',borderRadius:12,padding:'11px 14px',background:'#F7F9FB',display:'flex',alignItems:'center',gap:11}},
+      this.h('div',{style:{width:36,height:36,borderRadius:9,background:'#E7EEF5',display:'flex',alignItems:'center',justifyContent:'center',color:'#1F4E79',fontWeight:800,fontSize:11,flex:'0 0 auto'}}, 'OPS'),
+      this.h('div',null, this.h('div',{style:{fontSize:13,fontWeight:800,color:'#1F4E79'}}, 'Curricular Affairs Operations Team'), this.h('div',{style:{fontSize:11,fontWeight:600,color:'#8a93a0'}}, 'Administration & Coordination'))
+    );
+    return this.h('div',null,
+      grp('Senior Associate Dean',['soriano']),
+      grp('Associate Dean · Operations',['anand'],ops),
+      grp('Reports to the Senior Associate Dean',['leisman','holzer','ramaswamy','strother','singh','chadha','fernandez'])
+    );
+  }
+
+  // ---------- roster groups ----------
+  memberRow(m){
+    const cat=this.CATS[m.c]; const assoc=m.rank==='associate'; const dim=!this.visible(m); const flash=this.state.flash===m.id; const sel=this.state.selected===m.id;
+    const showArea=m.a&&m.a!==m.label&&m.a!==m.g;
+    return this.h('div',{key:m.id,id:'node-'+m.id,onClick:(e)=>{e.stopPropagation();this.select(m.id);},style:{display:'flex',gap:10,alignItems:'center',cursor:'pointer',padding:'6px 7px',borderRadius:10,marginLeft:assoc?16:0,background:sel?cat.color+'12':'transparent',opacity:dim?0.3:1,transition:'opacity .18s, background .18s',animation:flash?'flashPulse 1.3s ease-out':'none'}},
+      assoc?this.h('div',{style:{width:12,height:12,borderLeft:'2px solid #cdd9e3',borderBottom:'2px solid #cdd9e3',borderBottomLeftRadius:5,marginTop:-8,flex:'0 0 auto'}}):null,
+      this.photo(m,assoc?38:46),
+      this.h('div',{style:{minWidth:0}},
+        this.h('div',{style:{fontSize:assoc?13:14,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, m.n),
+        this.h('div',{style:{fontSize:12,fontWeight:700,color:cat.dk,lineHeight:1.2,marginTop:1}}, m.r+(showArea?(' · '+m.a):''))
+      )
+    );
+  }
+  groupCard(g){
+    const cat=this.CATS[g.c]; const vis=g.members.filter(m=>this.visible(m));
+    if((this.q()||this.state.filter!=='all')&&vis.length===0) return null;
+    const anyHit=this.q()&&vis.length>0;
+    return this.h('article',{key:g.key,style:{background:'#fff',border:'1px solid '+(anyHit?cat.color:'#E7E9EC'),borderRadius:14,overflow:'hidden',boxShadow:anyHit?'0 8px 22px rgba(31,78,121,.10)':'0 1px 0 rgba(31,78,121,.05)',transition:'border-color .18s, box-shadow .18s'}},
+      this.h('div',{style:{display:'flex',alignItems:'center',gap:10,padding:'11px 15px 10px 13px',background:cat.color+'12',borderBottom:'1px solid '+cat.color+'2e',borderLeft:'4px solid '+cat.color}},
+        this.h('div',{style:{fontSize:13.5,fontWeight:800,color:cat.dk,letterSpacing:'-.01em',lineHeight:1.2,flex:1}}, g.label),
+        g.members.length>1?this.h('span',{style:{fontSize:11,fontWeight:800,color:cat.dk,background:cat.color+'18',borderRadius:999,padding:'2px 8px'}}, g.members.length):null
+      ),
+      this.h('div',{style:{padding:'8px 13px 11px',display:'flex',flexDirection:'column',gap:2}}, g.members.map(m=>this.memberRow(m)))
+    );
+  }
+  phaseBody(key,cat,groups){
+    const grid=(cards)=>this.h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(290px, 1fr))',gap:14,alignItems:'start',animation:'fadeUp .25s ease'}}, cards);
+    if(key==='phase1'){
+      const blocks=[
+        {label:'Foundations Block',keys:['mcg','anat','fim','path']},
+        {label:'Organ System Based Block A',keys:['neuro','behav','cardio','pulm','renal']},
+        {label:'Organ System Based Block B',keys:['heme','endo','gi','gusrh','msk']}
+      ];
+      const byG={}; groups.forEach(g=>{byG[g.members[0].group]=g;});
+      return this.h('div',null, blocks.map(bl=>{
+        const cards=bl.keys.map(k=>byG[k]).filter(Boolean).map(g=>this.groupCard(g)).filter(Boolean);
+        if(!cards.length) return null;
+        return this.h('div',{key:bl.label,style:{marginBottom:20}},
+          this.h('div',{style:{display:'flex',alignItems:'center',gap:9,margin:'0 0 11px 2px'}},
+            this.h('span',{style:{width:6,height:6,borderRadius:2,background:cat.color,flex:'0 0 auto'}}),
+            this.h('div',{style:{fontSize:12,fontWeight:800,letterSpacing:'.07em',textTransform:'uppercase',color:cat.dk}}, bl.label)
+          ),
+          grid(cards)
+        );
+      }));
+    }
+    if(key==='aoc'){
+      const blocks=[{label:'Areas of Concentration',list:groups.filter(g=>g.kind==='aoc').sort((a,b)=>a.label.localeCompare(b.label))},{label:'Content Areas',list:groups.filter(g=>g.kind==='content').sort((a,b)=>a.label.localeCompare(b.label))}];
+      return this.h('div',null, blocks.map(bl=>{
+        const cards=bl.list.map(g=>this.groupCard(g)).filter(Boolean);
+        if(!cards.length) return null;
+        return this.h('div',{key:bl.label,style:{marginBottom:20}},
+          this.h('div',{style:{display:'flex',alignItems:'center',gap:9,margin:'0 0 11px 2px'}},
+            this.h('span',{style:{width:6,height:6,borderRadius:2,background:cat.color,flex:'0 0 auto'}}),
+            this.h('div',{style:{fontSize:12,fontWeight:800,letterSpacing:'.07em',textTransform:'uppercase',color:cat.dk}}, bl.label)
+          ),
+          grid(cards)
+        );
+      }));
+    }
+    const cards=groups.map(g=>this.groupCard(g)).concat(key==='assessment'&&!this.q()?[this.mentorsPlaceholder()]:[]);
+    return grid(cards);
+  }
+  section(key){
+    this.build(); const cat=this.CATS[key]; const lead=this.leadFor(key);
+    let groups=(this._groups[key]||[]).slice();
+    if(key==='aoc') groups.sort((a,b)=>(a.kind==='content'?1:0)-(b.kind==='content'?1:0));
+    if(key==='phase2'||key==='phase3') groups.sort((a,b)=>a.label.localeCompare(b.label));
+    const all=[].concat.apply([],groups.map(g=>g.members));
+    const anyVisible=all.some(m=>this.visible(m));
+    if(this.state.filter!=='all'&&this.state.filter!==key) return null;
+    if(this.q()&&!anyVisible) return null;
+    const collapsed=!!this.state.collapsed[key];
+    return this.h('section',{key:key,id:'sec-'+key,style:{marginBottom:30}},
+      this.h('div',{onClick:()=>this.toggleSection(key),style:{display:'flex',alignItems:'center',gap:13,marginBottom:16,cursor:'pointer',userSelect:'none',flexWrap:'wrap'}},
+        this.h('span',{style:{width:24,height:3,borderRadius:3,background:cat.color,flex:'0 0 auto'}}),
+        this.h('div',{style:{minWidth:0}},
+          this.h('div',{style:{fontSize:11,fontWeight:800,letterSpacing:'.13em',textTransform:'uppercase',color:cat.dk}}, cat.short),
+          this.h('div',{style:{fontSize:20,fontWeight:800,color:'#28323F',letterSpacing:'-.01em',lineHeight:1.15}}, cat.name)
+        ),
+        this.h('button',{onClick:(e)=>{e.stopPropagation();this.jump(lead.id);},style:{display:'inline-flex',alignItems:'center',gap:7,marginLeft:6,border:'1px solid #E4E4E5',background:'#fff',borderRadius:999,padding:'5px 11px 5px 6px',cursor:'pointer',fontFamily:'inherit'}},
+          this.photo(lead,24), this.h('span',{style:{fontSize:11.5,fontWeight:700,color:'#58595B'}}, 'Reports to '+this.bare(lead.n))
+        ),
+        this.h('span',{style:{marginLeft:'auto',display:'flex',alignItems:'center',gap:12}},
+          this.h('span',{style:{fontSize:13,fontWeight:700,color:'#8a93a0'}}, all.length+' people'),
+          this.h('span',{style:{display:'inline-flex',alignItems:'center',justifyContent:'center',width:26,height:26,borderRadius:8,border:'1px solid #E4E4E5',color:cat.dk,transform:collapsed?'rotate(-90deg)':'none',transition:'transform .2s'}}, '▾')
+        )
+      ),
+      collapsed?null:this.phaseBody(key,cat,groups)
+    );
+  }
+  sections(){ return this.h('div',null, ['phase1','phase2','phase3','assessment','aoc'].map(k=>this.section(k))); }
+
+  // ---------- search panel ----------
+  searchPanel(){
+    this.build(); const q=this.q(); if(!q) return null;
+    const seen={}; const hits=this._people.filter(p=>p.text.indexOf(q)>-1).slice(0,8);
+    return this.h('div',{style:{position:'absolute',top:'52px',left:0,right:0,background:'#fff',border:'1px solid #E4E4E5',borderRadius:12,boxShadow:'0 18px 40px rgba(31,78,121,.16)',zIndex:80,overflow:'hidden',animation:'fadeUp .15s ease'}},
+      hits.length?hits.map(p=>{ const cat=this.CATS[p.c];
+        return this.h('button',{key:p.id,onClick:()=>this.jump(p.id),style:{display:'flex',gap:11,alignItems:'center',width:'100%',border:'0',borderBottom:'1px solid #F0F1F3',background:'#fff',padding:'9px 12px',cursor:'pointer',textAlign:'left',fontFamily:'inherit'}},
+          this.photo(p,34),
+          this.h('div',{style:{minWidth:0,flex:1}},
+            this.h('div',{style:{fontSize:13.5,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, p.n),
+            this.h('div',{style:{fontSize:11.5,fontWeight:600,color:'#6b7480',lineHeight:1.2,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}, p.r+' · '+p.a)
+          ),
+          this.h('span',{style:{flex:'0 0 auto',fontSize:9.5,fontWeight:800,letterSpacing:'.08em',textTransform:'uppercase',color:cat.dk,background:cat.color+'1f',borderRadius:5,padding:'3px 7px'}}, cat.short)
+        );
+      }):this.h('div',{style:{padding:'16px 14px',fontSize:13.5,color:'#8a93a0'}}, 'No matches for “'+q+'”')
+    );
+  }
+
+  // ---------- filter bar ----------
+  filterBar(){
+    this.build(); const order=['all','leadership','phase1','phase2','phase3','assessment','aoc'];
+    const counts={all:this._people.length}; this._people.forEach(p=>{counts[p.c]=(counts[p.c]||0)+1;});
+    return this.h('div',{style:{display:'flex',gap:7,flexWrap:'wrap',alignItems:'center'}},
+      order.map(k=>{ const active=this.state.filter===k; const cat=k==='all'?null:this.CATS[k]; const color=cat?cat.color:'#1F4E79';
+        return this.h('button',{key:k,onClick:()=>this.setState({filter:k}),style:{display:'inline-flex',alignItems:'center',gap:7,height:36,padding:'0 12px',borderRadius:9,cursor:'pointer',fontFamily:'inherit',fontSize:12.5,fontWeight:700,border:'1.5px solid '+(active?color:'#E4E4E5'),background:active?color:'#fff',color:active?'#fff':'#58595B',transition:'all .15s'}},
+          cat?this.h('span',{style:{width:8,height:8,borderRadius:'50%',background:active?'#fff':cat.color}}):null,
+          k==='all'?'All':cat.short,
+          this.h('span',{style:{fontSize:11,fontWeight:800,background:active?'rgba(255,255,255,.25)':'#EEF1F4',color:active?'#fff':'#6b7480',borderRadius:999,padding:'1px 7px',minWidth:20,textAlign:'center'}}, counts[k]||0)
+        );
+      })
+    );
+  }
+
+  // ---------- detail panel ----------
+  detail(){
+    this.build(); const id=this.state.selected; if(!id) return null;
+    const p=this._byId[id]; const cat=this.CATS[p.c]; const mgr=p.parent?this._byId[p.parent]:null;
+    const reports=(this._kids[id]||[]); const close=()=>this.setState({selected:null});
+    const otherRoles=this._people.filter(x=>x.uid===p.uid&&x.id!==p.id);
+    const row=(label,val)=>this.h('div',{style:{marginBottom:14}}, this.h('div',{style:{fontSize:10.5,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:4}}, label), this.h('div',{style:{fontSize:14.5,fontWeight:600,color:'#28323F',lineHeight:1.4}}, val));
+    const mini=(x,onClick)=>this.h('button',{key:x.id,onClick,style:{display:'flex',gap:10,alignItems:'center',width:'100%',border:'1px solid #ECEEF1',background:'#fff',borderRadius:10,padding:'7px 9px',cursor:'pointer',textAlign:'left',fontFamily:'inherit',marginBottom:7}},
+      this.photo(x,34), this.h('div',{style:{minWidth:0}}, this.h('div',{style:{fontSize:13,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, x.n), this.h('div',{style:{fontSize:11.5,fontWeight:600,color:'#6b7480',lineHeight:1.2}}, x.r+(x.c!=='leadership'?(' · '+x.a):''))));
+    return this.h('div',{style:{position:'fixed',inset:0,zIndex:100,display:'flex',justifyContent:'flex-end'}},
+      this.h('div',{onClick:close,style:{position:'absolute',inset:0,background:'rgba(20,38,58,.42)',backdropFilter:'blur(2px)'}}),
+      this.h('div',{'data-detailsheet':true,style:{position:'relative',width:'min(420px, 92vw)',height:'100%',background:'#fff',boxShadow:'-20px 0 50px rgba(20,38,58,.2)',overflowY:'auto',animation:'sheetIn .26s cubic-bezier(.2,.7,.3,1)'}},
+        this.h('div',{style:{background:'linear-gradient(135deg,'+cat.dk+','+cat.color+')',padding:'22px 22px 20px',color:'#fff',position:'relative'}},
+          this.h('button',{onClick:close,style:{position:'absolute',top:14,right:14,width:32,height:32,borderRadius:'50%',border:'0',background:'rgba(255,255,255,.2)',color:'#fff',fontSize:18,cursor:'pointer',fontFamily:'inherit',lineHeight:1}}, '×'),
+          this.h('div',{style:{display:'flex',gap:15,alignItems:'center'}},
+            this.h('div',{style:{width:78,height:78,borderRadius:18,overflow:'hidden',flex:'0 0 auto',boxShadow:'0 0 0 3px rgba(255,255,255,.45)',position:'relative',background:'rgba(255,255,255,.15)'}},
+              this.h('div',{style:{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',fontWeight:800,fontSize:26,color:'#fff'}}, this.initials(p.n)),
+              p.photo?this.h('img',{src:p.photo,alt:this.bare(p.n),onError:e=>{e.target.style.display='none';},style:{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}):null
+            ),
+            this.h('div',{style:{minWidth:0}},
+              this.h('div',{style:{fontSize:11,fontWeight:800,letterSpacing:'.1em',textTransform:'uppercase',opacity:.92}}, p.tag||cat.tag),
+              this.h('div',{style:{fontSize:21,fontWeight:800,letterSpacing:'-.01em',lineHeight:1.15,marginTop:4}}, p.n)
+            )
+          )
+        ),
+        this.h('div',{style:{padding:'20px 22px 30px'}},
+          row('Role / Title', p.r),
+          (p.also&&p.also.length)?this.h('div',{style:{marginBottom:14}},
+            this.h('div',{style:{fontSize:10.5,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:4}}, p.also.length>1?'Additional Roles':'Additional Role'),
+            p.also.map((x,i)=>this.h('div',{key:i,style:{fontSize:14.5,fontWeight:600,color:'#28323F',lineHeight:1.4,marginTop:i?5:0}}, x))
+          ):null,
+          row('Module / Area', p.a),
+          row('Department / Division', p.dept || '—'),
+          row('Curriculum Phase', cat.name),
+          otherRoles.length?this.h('div',{style:{marginBottom:14}}, this.h('div',{style:{fontSize:10.5,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:6}}, 'Also serves as'), otherRoles.map(x=>mini(x,()=>this.jump(x.id)))):null,
+          (p.reportsToText||mgr)?this.h('div',{style:{marginBottom:14}}, this.h('div',{style:{fontSize:10.5,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:6}}, 'Reports to'), p.reportsToText?this.h('div',{style:{fontSize:14.5,fontWeight:600,color:'#28323F',lineHeight:1.4}}, p.reportsToText):mini(mgr,()=>this.jump(mgr.id))):null,
+          reports.length?this.h('div',{style:{marginBottom:14}}, this.h('div',{style:{fontSize:10.5,fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:6}}, 'Direct reports ('+reports.length+')'), reports.map(rp=>mini(rp,()=>this.jump(rp.id)))):null,
+          p.email?this.h('a',{href:'mailto:'+p.email,style:{display:'flex',alignItems:'center',gap:9,marginTop:6,padding:'12px 14px',borderRadius:11,background:cat.color+'12',color:cat.dk,textDecoration:'none',fontWeight:700,fontSize:14}},
+            this.h('svg',{viewBox:'0 0 24 24',width:17,height:17,fill:'none',stroke:'currentColor',strokeWidth:2}, this.h('rect',{x:3,y:5,width:18,height:14,rx:2}), this.h('path',{d:'M3 7l9 6 9-6'})), p.email
+          ):this.h('div',{style:{marginTop:6,padding:'12px 14px',borderRadius:11,background:'#F4F5F7',color:'#8a93a0',fontWeight:600,fontSize:13.5}}, 'Position to be announced'),
+          this.h('div',{style:{marginTop:8,fontSize:11,color:'#aab2bc',lineHeight:1.4}}, 'Email addresses follow the firstname.lastname@mssm.edu convention and should be verified before use.')
+        )
+      )
+    );
+  }
+
+  renderVals(){
+    this.build();
+    const anyVisible=this._people.some(p=>this.visible(p));
+    const seen={}; let unique=0; this._people.forEach(p=>{ if(p.n==='TBA') return; if(!seen[p.uid]){seen[p.uid]=1;unique++;} });
+    const ck=['phase1','phase2','phase3','assessment','aoc'];
+    const allCollapsed=ck.every(k=>this.state.collapsed[k]);
+    return {
+      contactHref: 'mailto:curricular.affairs'+'@'+'mssm.edu',
+      stat_people: unique,
+      query: this.state.query,
+      hasQuery: !!this.state.query,
+      onSearch: (e)=>this.setState({query:e.target.value}),
+      clearSearch: ()=>this.setState({query:''}),
+      searchPanel: this.searchPanel(),
+      filterBar: this.filterBar(),
+      leadershipTree: this.state.mobile?this.mobileLeadership():this.leadershipTree(),
+      sections: this.sections(),
+      detail: this.detail(),
+      noResults: !anyVisible,
+      toggleAllLabel: allCollapsed?'Expand all':'Collapse all',
+      toggleAll: ()=>{ const v=!allCollapsed; const c={}; ck.forEach(k=>c[k]=v); this.setState({collapsed:c}); }
+    };
+  }
+}
+</script>
+</body>
+</html>
