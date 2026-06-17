@@ -325,11 +325,11 @@ class Component extends DCLogic {
     this.build(); const b=this._byId; const line='#BCD0E0';
     const tier2=['leisman','holzer','ramaswamy','strother'].map(id=>this.treeCard(b[id],'md'));
     const tier3=['singh','chadha','fernandez'].map(id=>this.treeCard(b[id],'md'));
-    const spineH=348;
+    const spineH=420;
     const topRegion=this.h('div',{style:{position:'relative',width:'100%',height:spineH}},
       this.h('div',{style:{position:'absolute',left:'calc(50% - 1px)',top:0,height:spineH,width:2,background:line}}),
       this.h('div',{style:{position:'absolute',left:'50%',top:30,display:'flex',alignItems:'flex-start'}},
-        this.h('div',{style:{width:54,height:0,borderTop:'2px dashed '+line,marginTop:50,flex:'0 0 auto'}}),
+        this.h('div',{style:{width:128,height:0,borderTop:'2px dashed '+line,marginTop:50,flex:'0 0 auto'}}),
         this.h('div',{style:{display:'flex',flexDirection:'column',alignItems:'center'}},
           this.h('div',{style:{fontSize:10,fontWeight:800,letterSpacing:'.13em',textTransform:'uppercase',color:'#9aa3ae',marginBottom:7}}, 'Administrative'),
           this.treeCard(b['anand'],'md'),
