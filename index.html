@@ -118,7 +118,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { query:'', filter:'all', selected:null, flash:null, collapsed:{}, mobile:false, mentorsOpen:false };
+  state = { query:'', filter:'all', selected:null, flash:null, collapsed:{}, mobile:false, mentorsOpen:true };
   h = (...a) => React.createElement(...a);
 
   CATS = {
@@ -240,6 +240,8 @@ class Component extends DCLogic {
     {id:'ccm-truong',n:'Tiffany Truong',a:'Cohort B',dept:'Pediatrics',photo:'assets/people/tiffany-truong.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
     {id:'ccm-woods',n:'Eric Woods',a:'Cohort B',dept:'Internal Medicine',photo:'assets/people/eric-woods.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
     {id:'ccm-yan',n:'Diana Yan',a:'Cohort A',dept:'Pediatric Emergency Medicine',photo:'assets/people/diana-yan.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-tba-a',n:'TBA',a:'Cohort A',dept:'',photo:'',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-tba-a2',n:'TBA',a:'Cohort A',dept:'',photo:'',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
 
     // AOC & CONTENT AREAS (lead: ramaswamy)
     {id:'portnoy',n:'David Portnoy, MD',r:'AOC Director',a:'Professional Identity Formation',g:'Professional Identity Formation',group:'aoc-pif',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medicine · Hospital Medicine'},
@@ -332,7 +334,7 @@ class Component extends DCLogic {
       this.photo(m,44),
       this.h('div',{style:{minWidth:0}},
         this.h('div',{style:{fontSize:14,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, m.n),
-        this.h('div',{style:{fontSize:12,fontWeight:700,color:cat.dk,lineHeight:1.2,marginTop:1}}, m.dept)
+        this.h('div',{style:{fontSize:12,fontWeight:700,color:cat.dk,lineHeight:1.2,marginTop:1}}, m.r+' ('+m.a+')')
       )
     );
   }
@@ -350,7 +352,22 @@ class Component extends DCLogic {
       this.h('span',{style:{fontSize:11,fontWeight:800,color:cat.dk,background:cat.color+'18',borderRadius:999,padding:'2px 8px',flex:'0 0 auto'}}, g.members.length),
       this.h('span',{style:{display:'inline-flex',alignItems:'center',justifyContent:'center',width:24,height:24,borderRadius:7,border:'1px solid '+cat.color+'33',color:cat.dk,flex:'0 0 auto',transform:open?'none':'rotate(-90deg)',transition:'transform .2s'}}, '▾')
     );
-    const body=open?this.h('div',{style:{padding:'10px 13px 13px',display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(238px, 1fr))',gap:2,animation:'fadeUp .2s ease'}}, vis.map(m=>this.mentorRow(m))):null;
+    const cohorts=['Cohort A','Cohort B'];
+    const body=open?this.h('div',{style:{padding:'10px 13px 13px',animation:'fadeUp .2s ease'}},
+      cohorts.map((co,ci)=>{
+        const list=vis.filter(m=>m.a===co);
+        if(!list.length) return null;
+        const prior=ci>0&&vis.some(m=>m.a===cohorts[ci-1]);
+        return this.h('div',{key:co,style:{marginTop:prior?16:0}},
+          this.h('div',{style:{display:'flex',alignItems:'center',gap:8,margin:'0 0 8px 1px'}},
+            this.h('span',{style:{width:6,height:6,borderRadius:2,background:cat.color,flex:'0 0 auto'}}),
+            this.h('div',{style:{fontSize:11.5,fontWeight:800,letterSpacing:'.07em',textTransform:'uppercase',color:cat.dk}}, co),
+            this.h('span',{style:{fontSize:10.5,fontWeight:700,color:'#8a93a0'}}, list.length+(list.length===1?' mentor':' mentors'))
+          ),
+          this.h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(238px, 1fr))',gap:2}}, list.map(m=>this.mentorRow(m)))
+        );
+      })
+    ):null;
     return this.h('article',{key:g.key,style:{background:'#fff',border:'1px solid '+(anyHit?cat.color:'#E7E9EC'),borderRadius:14,overflow:'hidden',boxShadow:anyHit?'0 8px 22px rgba(31,78,121,.10)':'0 1px 0 rgba(31,78,121,.05)',transition:'border-color .18s, box-shadow .18s'}}, header, body);
   }
   connector(i,n,gap){ const line='#BCD0E0'; const H=24; const g=gap/2;
