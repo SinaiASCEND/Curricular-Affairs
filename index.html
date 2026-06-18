@@ -118,7 +118,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { query:'', filter:'all', selected:null, flash:null, collapsed:{}, mobile:false };
+  state = { query:'', filter:'all', selected:null, flash:null, collapsed:{}, mobile:false, mentorsOpen:false };
   h = (...a) => React.createElement(...a);
 
   CATS = {
@@ -210,6 +210,37 @@ class Component extends DCLogic {
     {id:'ttr-1',n:'TBA',r:'Co-Director',a:'Transition to Residency (TTR)',g:'Transition to Residency (TTR)',group:'ttr',rank:'co',c:'assessment',parent:'strother',photo:''},
     {id:'ttr-2',n:'TBA',r:'Co-Director',a:'Transition to Residency (TTR)',g:'Transition to Residency (TTR)',group:'ttr',rank:'co',c:'assessment',parent:'strother',photo:''},
 
+    // CLINICAL COMPETENCY MENTORS (lead: strother) — alphabetical by last name
+    {id:'ccm-ali',n:'Yousaf Ali',a:'Cohort A',dept:'Rheumatology',photo:'assets/people/yousaf-ali.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-allyn',n:'Katie Allyn',a:'Cohort B',dept:'Internal Medicine',photo:'assets/people/katie-allyn.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-amoo-achampong',n:'Monica Amoo-Achampong',a:'Cohort A',dept:'Pediatrics',photo:'assets/people/monica-amoo-achampong.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-appel',n:'Jacob Appel',a:'Cohort B',dept:'Psychiatry',photo:'assets/people/jacob-appel.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-bhatia',n:'Sonica Bhatia',a:'Cohort A',dept:'Geriatrics & Palliative Care',photo:'assets/people/sonica-bhatia.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-billings',n:'Bryan Billings',a:'Cohort B',dept:'Family Medicine / Obesity Medicine',photo:'assets/people/bryan-billings.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-chase',n:'Jennifer Chase',a:'Cohort A',dept:'Pediatrics',photo:'assets/people/jennifer-chase.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-cheesman',n:'Khadeen Cheesman',a:'Cohort B',dept:'Endocrinology',photo:'assets/people/khadeen-cheesman.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-choo',n:'Eugene Choo',a:'Cohort B',dept:'Allergy & Immunology',photo:'assets/people/eugene-choo.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-driscoll',n:'Patricia Driscoll',a:'Cohort B',dept:'Internal Medicine, Primary Care',photo:'assets/people/patricia-driscoll.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-fasano',n:'Julie Fasano',a:'Cohort A',dept:'Hematology-Oncology',photo:'assets/people/julie-fasano.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-garcia',n:'Sylvia Garcia',a:'Cohort A',dept:'Pediatric Emergency Medicine',photo:'assets/people/sylvia-garcia.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-gliatto',n:'Peter Gliatto',a:'Cohort A',dept:'Internal Medicine, Primary Care',photo:'assets/people/peter-gliatto.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-hollman',n:'Dominic Hollman',a:'Cohort B',dept:'Pediatrics, Adolescent Medicine',photo:'assets/people/dominic-hollman.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-kaplan',n:'Michael Kaplan',a:'Cohort B',dept:'Rheumatology',photo:'assets/people/michael-kaplan.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-khan',n:'Rabeea Khan',a:'Cohort A',dept:'Occupational Medicine',photo:'assets/people/rabeea-khan.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-khanna',n:'Ira Khanna',a:'Cohort B',dept:'Rheumatology',photo:'assets/people/ira-khanna.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-koransky',n:'Alison Koransky',a:'Cohort B',dept:'Internal Medicine',photo:'assets/people/alison-koransky.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-kutscher',n:'Eric Kutscher',a:'Cohort A',dept:'Internal Medicine, Addiction Medicine',photo:'assets/people/eric-kutscher.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-lee',n:'Kyunghyun Lee',a:'Cohort B',dept:'Hospital Medicine',photo:'assets/people/kyunghyun-lee.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-mutalik',n:'Shruti Mutalik',a:'Cohort A',dept:'Psychiatry',photo:'assets/people/shruti-mutalik.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-rodriguez',n:'Vanessa Rodriguez',a:'Cohort B',dept:'Geriatrics & Palliative Care',photo:'assets/people/vanessa-rodriguez.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-rowe',n:'Joel Rowe',a:'Cohort B',dept:'Emergency Medicine',photo:'assets/people/joel-rowe.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-schwartz',n:'Myron Schwartz',a:'Cohort B',dept:'Transplant Surgery',photo:'assets/people/myron-schwartz.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-shtessel',n:'Masha Shtessel',a:'Cohort A',dept:'Allergy & Immunology',photo:'assets/people/masha-shtessel.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-singer',n:'Elizabeth Singer',a:'Cohort A',dept:'Emergency Medicine',photo:'assets/people/elizabeth-singer.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-truong',n:'Tiffany Truong',a:'Cohort B',dept:'Pediatrics',photo:'assets/people/tiffany-truong.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-woods',n:'Eric Woods',a:'Cohort B',dept:'Internal Medicine',photo:'assets/people/eric-woods.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+    {id:'ccm-yan',n:'Diana Yan',a:'Cohort A',dept:'Pediatric Emergency Medicine',photo:'assets/people/diana-yan.png',r:'Clinical Competency Mentor',g:'Clinical Competency Mentors',group:'ccm-mentors',kind:'mentor',c:'assessment',reportsToText:'Christopher Strother, MD · Clinical Competency Mentoring Program'},
+
     // AOC & CONTENT AREAS (lead: ramaswamy)
     {id:'portnoy',n:'David Portnoy, MD',r:'AOC Director',a:'Professional Identity Formation',g:'Professional Identity Formation',group:'aoc-pif',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medicine · Hospital Medicine'},
     {id:'hess',n:'Leona Hess, PhD',r:'AOC Director',a:'Patient-Centered Advocacy',g:'Patient-Centered Advocacy',group:'aoc-adv',rank:'director',kind:'aoc',c:'aoc',parent:'ramaswamy',dept:'Medical Education'},
@@ -295,20 +326,32 @@ class Component extends DCLogic {
     this.h('div',{style:{fontSize:12.5,fontWeight:800,color:'#1F4E79',lineHeight:1.2}}, 'Curricular Affairs Operations Team'),
     this.h('div',{style:{fontSize:11,fontWeight:600,color:'#8a93a0',marginTop:3}}, 'Administration & Coordination')
   ); }
-  mentorsPlaceholder(){ const c='#BD7E2A', dk='#8A5A14';
-    return this.h('article',{key:'cc-mentors',style:{background:'#FCFAF6',border:'1.5px dashed '+c+'88',borderRadius:14,overflow:'hidden'}},
-      this.h('div',{style:{display:'flex',alignItems:'center',gap:10,padding:'11px 15px 10px 13px',background:c+'12',borderBottom:'1px dashed '+c+'55',borderLeft:'4px dashed '+c}},
-        this.h('div',{style:{fontSize:13.5,fontWeight:800,color:dk,letterSpacing:'-.01em',lineHeight:1.2,flex:1}}, 'Clinical Competency Mentors'),
-        this.h('span',{style:{fontSize:11,fontWeight:800,color:dk,background:c+'1f',borderRadius:999,padding:'2px 8px'}}, '30')
-      ),
-      this.h('div',{style:{padding:'14px 15px',display:'flex',alignItems:'center',gap:12}},
-        this.h('div',{style:{width:46,height:46,borderRadius:12,border:'1.5px dashed '+c+'88',display:'flex',alignItems:'center',justifyContent:'center',color:dk,fontWeight:800,fontSize:15,flex:'0 0 auto',background:c+'0e'}}, '30'),
-        this.h('div',{style:{minWidth:0}},
-          this.h('div',{style:{fontSize:13.5,fontWeight:800,color:'#1F4E79',lineHeight:1.2}}, 'Mentor roster to be added'),
-          this.h('div',{style:{fontSize:12,fontWeight:600,color:'#8a93a0',marginTop:2,lineHeight:1.3}}, 'Approximately 30 Clinical Competency Mentors will expand here under Dr. Strother.')
-        )
+  mentorRow(m){
+    const cat=this.CATS[m.c]; const dim=!this.visible(m); const flash=this.state.flash===m.id; const sel=this.state.selected===m.id;
+    return this.h('div',{key:m.id,id:'node-'+m.id,onClick:(e)=>{e.stopPropagation();this.select(m.id);},style:{display:'flex',gap:10,alignItems:'center',cursor:'pointer',padding:'6px 7px',borderRadius:10,background:sel?cat.color+'12':'transparent',opacity:dim?0.3:1,transition:'opacity .18s, background .18s',animation:flash?'flashPulse 1.3s ease-out':'none'}},
+      this.photo(m,44),
+      this.h('div',{style:{minWidth:0}},
+        this.h('div',{style:{fontSize:14,fontWeight:800,color:'#1F4E79',lineHeight:1.15}}, m.n),
+        this.h('div',{style:{fontSize:12,fontWeight:700,color:cat.dk,lineHeight:1.2,marginTop:1}}, m.dept)
       )
     );
+  }
+  mentorsCard(g){
+    const cat=this.CATS[g.c]; const q=this.q();
+    const vis=g.members.filter(m=>this.visible(m));
+    if((q||this.state.filter!=='all')&&vis.length===0) return null;
+    const open=this.state.mentorsOpen||!!q;
+    const anyHit=q&&vis.length>0;
+    const header=this.h('div',{onClick:()=>this.setState({mentorsOpen:!this.state.mentorsOpen}),style:{display:'flex',alignItems:'center',gap:10,padding:'12px 15px 11px 13px',background:cat.color+'12',borderBottom:open?('1px solid '+cat.color+'2e'):'0',borderLeft:'4px solid '+cat.color,cursor:'pointer',userSelect:'none'}},
+      this.h('div',{style:{minWidth:0,flex:1}},
+        this.h('div',{style:{fontSize:13.5,fontWeight:800,color:cat.dk,letterSpacing:'-.01em',lineHeight:1.2}}, g.label),
+        this.h('div',{style:{fontSize:11.5,fontWeight:600,color:'#8a93a0',marginTop:2,lineHeight:1.2}}, open?'Click any mentor for full details':'Click to view all '+g.members.length+' mentors')
+      ),
+      this.h('span',{style:{fontSize:11,fontWeight:800,color:cat.dk,background:cat.color+'18',borderRadius:999,padding:'2px 8px',flex:'0 0 auto'}}, g.members.length),
+      this.h('span',{style:{display:'inline-flex',alignItems:'center',justifyContent:'center',width:24,height:24,borderRadius:7,border:'1px solid '+cat.color+'33',color:cat.dk,flex:'0 0 auto',transform:open?'none':'rotate(-90deg)',transition:'transform .2s'}}, '▾')
+    );
+    const body=open?this.h('div',{style:{padding:'10px 13px 13px',display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(238px, 1fr))',gap:2,animation:'fadeUp .2s ease'}}, vis.map(m=>this.mentorRow(m))):null;
+    return this.h('article',{key:g.key,style:{background:'#fff',border:'1px solid '+(anyHit?cat.color:'#E7E9EC'),borderRadius:14,overflow:'hidden',boxShadow:anyHit?'0 8px 22px rgba(31,78,121,.10)':'0 1px 0 rgba(31,78,121,.05)',transition:'border-color .18s, box-shadow .18s'}}, header, body);
   }
   connector(i,n,gap){ const line='#BCD0E0'; const H=24; const g=gap/2;
     return this.h('div',{style:{position:'relative',width:'100%',height:H}},
@@ -444,7 +487,18 @@ class Component extends DCLogic {
         );
       }));
     }
-    const cards=groups.map(g=>this.groupCard(g)).concat(key==='assessment'&&!this.q()?[this.mentorsPlaceholder()]:[]);
+    if(key==='assessment'){
+      const isMentors=g=>g.members[0]&&g.members[0].group==='ccm-mentors';
+      const mentors=groups.find(isMentors);
+      const others=groups.filter(g=>!isMentors(g));
+      const cards=others.map(g=>this.groupCard(g)).filter(Boolean);
+      const mcard=mentors?this.mentorsCard(mentors):null;
+      return this.h('div',null,
+        cards.length?grid(cards):null,
+        mcard?this.h('div',{style:{marginTop:cards.length?14:0}}, mcard):null
+      );
+    }
+    const cards=groups.map(g=>this.groupCard(g));
     return grid(cards);
   }
   section(key){
